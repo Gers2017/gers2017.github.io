@@ -1,0 +1,51 @@
+<nav>
+    <a href="/">
+        <h2>Gers Blog</h2>
+    </a>
+</nav>
+
+<style>
+    :root {
+        --cool-gradient: linear-gradient(0deg, var(--color-primary), #7765ff);
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 4rem;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 900;
+        background-image: var(--cool-gradient);
+        background-size: 100% 200%;
+        border-radius: 0.5rem;
+        background-position-y: 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: vibe 2s ease-in infinite;
+    }
+
+    @keyframes vibe {
+
+        0%,
+        100% {
+            background-position-y: 0%;
+        }
+
+        50% {
+            background-position-y: 100%;
+        }
+    }
+
+    /* ul.items {
+        padding-left: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: flex;
+        gap: 1rem;
+    } */
+</style>

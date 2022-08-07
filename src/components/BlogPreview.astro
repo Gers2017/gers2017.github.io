@@ -1,0 +1,44 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+    date: string;
+    url: string;
+}
+
+const { title, description, date, url } = Astro.props as Props
+---
+
+<section class="column">
+    <header class="row">
+        <a href={url}>
+            <h2 class="link">{title}</h2>
+        </a>
+        <time>{date}</time>
+    </header>
+    <p>{description}</p>
+    <a href={url}>
+        <button>Read more</button>
+    </a>
+</section>
+
+<style>
+    section {
+        border: 1px var(--color-primary) solid;
+        padding: 0.5rem 1rem;
+    }
+
+    h2,
+    p,
+    time {
+        margin: 0;
+    }
+
+    time {
+        color: var(--color-border);
+    }
+
+    p {
+        color: var(--color-text);
+    }
+</style>

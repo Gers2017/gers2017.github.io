@@ -1,0 +1,28 @@
+---
+export interface Props {
+    author: string;
+}
+
+const { author } = Astro.props as Props;
+---
+
+<footer>
+    <div class="row">
+        <span>Made with 💗 by {author}</span>
+        <span>⚡ Powered by <a href='https://astro.build/'>Astro</a></span>
+    </div>
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-text);
+        font-weight: bold;
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: var(--color-bg-pale);
+        min-height: 10vh;
+    }
+</style>

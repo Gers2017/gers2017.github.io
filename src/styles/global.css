@@ -1,0 +1,110 @@
+:root {
+    --font-size-base: clamp(1rem, 0.35vw, 1.19rem);
+    --font-size-lg: 2rem;
+    --font-size-xl: 3rem;
+
+    --color-text: #FFFFFF;
+    --color-border: #EEEEEE;
+    --color-bg: #151A23;
+    --color-bg-pale: #1a1f29;
+    --color-bg-gray: #323B49;
+    --color-primary: #58D99C;
+    --color-primary-dark: #32B69B;
+    --color-contrast: #C74B64;
+
+    /* 
+        Extra Small = xs
+        Small       = s
+        Medium      = m
+        Large       = l
+        Extra Lager = xl
+    */
+    /* units */
+    --pad-xs: var(--pad-s);
+    --pad-s: 1rem;
+    --pad-x-med: 2rem;
+    --pad-x-lg: 3rem;
+    --pad-x-xl: 4rem;
+
+    --font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji;
+    --font-body: 'IBM Plex Sans', var(--font-fallback);
+    --font-mono: 'IBM Plex Mono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+        'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
+        'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+}
+
+/* utility classes */
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.column.small {
+    gap: var(--pad-s);
+}
+
+.column.no-gap {
+    gap: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 1rem 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);;
+}
+
+.link {
+    position: relative;
+}
+
+.link::after {
+    position: absolute;
+    left: 0px;
+    width: 0%;
+    height: 4px;
+    content: "";
+    display: block;
+    transition: all 0.2s cubic-bezier(.17,.84,.44,1);
+    background-color: var(--color-primary);
+}
+
+.link:hover::after {
+    width: 100%;
+    left: 10px;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+blockquote {
+    margin-left: 0px;
+	background-color: var(--color-bg-pale);
+	color: var(--color-border);
+	padding: 0.4rem;
+    padding-left: 2rem;
+}

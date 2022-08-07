@@ -1,0 +1,29 @@
+---
+import "../styles/blog.css";
+import Layout from "./Layout.astro";
+export interface Props {
+    content: {
+        title: string;
+        description: string;
+        date: string;
+        author: string;
+    }
+}
+
+const { content } = Astro.props as Props;
+const { title, description, date, author } = content;
+
+---
+
+<Layout title={title} description={description}>
+    <header class="blog-header column small">
+        <h1>{title}</h1>
+        <div class="smug row">
+            <span>&rarr; By {author} Posted on <time>{date}</time></span>
+        </div>
+    </header>
+    <header>
+    </header>
+    <!-- Markdown content here -->
+    <slot />
+</Layout>
