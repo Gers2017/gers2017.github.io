@@ -2,11 +2,11 @@
 export interface Props {
     title: string;
     description: string;
-    date: string;
+    postdate: string;
     url: string;
 }
 
-const { title, description, date, url } = Astro.props as Props
+const { title, description, postdate, url } = Astro.props as Props
 ---
 
 <section class="link-parent column">
@@ -14,7 +14,7 @@ const { title, description, date, url } = Astro.props as Props
         <a href={url}>
             <h2 class="link">{title}</h2>
         </a>
-        <time>{date}</time>
+        <time>{postdate}</time>
     </header>
     <p>{description}</p>
     <a href={url}>

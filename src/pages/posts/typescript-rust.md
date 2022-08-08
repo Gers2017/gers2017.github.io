@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 
 title: "Typescript + Rust = Trust"
 description: "Trust: Using Rust's Result and Some enum in Typescript"
-date: "7 Aug 2022"
+postdate: "7 Aug 2022"
 author: "Gers"
 ---
 

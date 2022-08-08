@@ -5,17 +5,16 @@ import BlogPreview from '../components/BlogPreview.astro';
 const uposts = await Astro.glob("./posts/*.md");
 const posts = uposts.sort(function (a, b) {
 	return (
-		new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
+		new Date(b.frontmatter.postdate).valueOf() - new Date(a.frontmatter.postdate).valueOf()
 	);
 });
-
 ---
 
 <Layout title="Gers Blog" description="Gers Blog Posts">
 	<div class="grid">
 		<ul class="column">
 			{posts.map(({ url, frontmatter }) => (
-			<BlogPreview title={frontmatter.title} description={frontmatter.description} date={frontmatter.date}
+			<BlogPreview title={frontmatter.title} description={frontmatter.description} postdate={frontmatter.postdate}
 				url={url!} />
 			))}
 		</ul>

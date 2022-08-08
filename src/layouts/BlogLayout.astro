@@ -4,13 +4,13 @@ export interface Props {
     content: {
         title: string;
         description: string;
-        date: string;
+        postdate: string;
         author: string;
     }
 }
 
 const { content } = Astro.props as Props;
-const { title, description, date, author } = content;
+const { title, description, postdate, author } = content;
 
 ---
 
@@ -19,7 +19,7 @@ const { title, description, date, author } = content;
         <header class="column small">
             <h1>{title}</h1>
             <div class="smug row">
-                <span>&rarr; By {author} Posted on <time>{date}</time></span>
+                <span>&rarr; By {author} Posted on <time>{postdate}</time></span>
             </div>
         </header>
         <!-- Markdown content here -->
