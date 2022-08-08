@@ -9,7 +9,7 @@ export interface Props {
 const { title, description, date, url } = Astro.props as Props
 ---
 
-<section class="column">
+<section class="link-parent column">
     <header class="row">
         <a href={url}>
             <h2 class="link">{title}</h2>
@@ -26,6 +26,12 @@ const { title, description, date, url } = Astro.props as Props
     section {
         border: 1px var(--color-primary) solid;
         padding: 0.5rem 1rem;
+        transition: all 0.2s cubic-bezier(.17, .84, .44, 1);
+    }
+
+    section.link-parent:hover {
+        transform: scale(1.05);
+        box-shadow: 8px 4px 0px var(--color-primary-transparent);
     }
 
     h2,
@@ -34,11 +40,7 @@ const { title, description, date, url } = Astro.props as Props
         margin: 0;
     }
 
-    time {
-        color: var(--color-border);
-    }
-
-    p {
-        color: var(--color-text);
+    a {
+        width: max-content;
     }
 </style>

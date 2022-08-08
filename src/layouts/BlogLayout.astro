@@ -16,14 +16,14 @@ const { title, description, date, author } = content;
 ---
 
 <Layout title={title} description={description}>
-    <header class="blog-header column small">
-        <h1>{title}</h1>
-        <div class="smug row">
-            <span>&rarr; By {author} Posted on <time>{date}</time></span>
-        </div>
-    </header>
-    <header>
-    </header>
-    <!-- Markdown content here -->
-    <slot />
+    <div class="blog">
+        <header class="column small">
+            <h1>{title}</h1>
+            <div class="smug row">
+                <span>&rarr; By {author} Posted on <time>{date}</time></span>
+            </div>
+        </header>
+        <!-- Markdown content here -->
+        <slot />
+    </div>
 </Layout>

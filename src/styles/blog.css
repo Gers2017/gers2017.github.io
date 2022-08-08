@@ -1,8 +1,7 @@
-
-.blog-header {
+.blog header {
 	margin-bottom: 2rem;
 }
-.blog-header > *{
+.blog header > *{
 	margin: 0;
 }
 
@@ -15,6 +14,15 @@
 	font-weight: bold;
 }
 
+.blog p {
+	line-height: 1.625;
+}
+
+.blog ul {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
 
 code {
 	--border-radius: 8px;
@@ -24,7 +32,7 @@ code {
 	font-family: var(--font-mono);
 	font-size: 0.85em;
 	color: inherit;
-	background-color: var(--theme-code-inline-bg);
+	background-color: var(--color-bg-gray);
 	padding: var(--padding-block) var(--padding-inline);
 	margin: calc(var(--padding-block) * -1) -0.125em;
 	border-radius: var(--border-radius);
