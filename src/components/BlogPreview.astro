@@ -43,4 +43,11 @@ const { title, description, postdate, url } = Astro.props as Props
     a {
         width: max-content;
     }
+
+    /* On Mobile */
+    @media only screen and (max-width: 768px) {
+        section h2 {
+            font-size: 1.5rem;
+        }
+    }
 </style>

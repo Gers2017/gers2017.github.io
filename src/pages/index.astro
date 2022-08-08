@@ -30,7 +30,17 @@ const posts = uposts.sort(function (a, b) {
 
 	ul {
 		padding-left: 0;
-		grid-column-start: 2;
-		grid-column-end: 3;
+		grid-column: 2 / 3;
+	}
+
+	/* On Mobile */
+	@media only screen and (max-width: 768px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+
+		ul {
+			grid-column: 1 / 2;
+		}
 	}
 </style>
