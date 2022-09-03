@@ -1,66 +1,61 @@
 ---
-import "../styles/global.css"
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
-export interface Props {
-	title: string;
-	description: string;
+export interface LayoutProps {
+    title: string;
+    description: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description } = Astro.props as LayoutProps;
+const githubUrl = "https://github.com/Gers2017";
 ---
 
-<!DOCTYPE html>
 <html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{title}</title>
-	<meta name="title" content={title} />
-	<meta name="description" content={description} />
-</head>
+    <body>
+        <Navbar githubUrl={githubUrl} />
+        <main>
+            <slot />
+        </main>
+        <Footer author="Gers" />
+        <style>
+            html {
+                font-family: Popins, system-ui, sans-serif;
+                font-size: var(--font-size-base);
+                color: var(--color-text);
+                background-color: var(--color-bg);
+            }
 
-<body>
-	<Navbar />
-	<main>
-		<slot />
-	</main>
-	<Footer author="Gers" />
-</body>
+            body {
+                margin: 0;
+            }
 
+            main {
+                min-height: 90vh;
+                max-width: 1260px;
+                margin: 1rem auto;
+            }
+
+            /* On Mobile */
+            @media only screen and (max-width: 768px) {
+                main {
+                    margin: 1rem 0;
+                }
+            }
+
+            :global(h1) {
+                font-size: var(--font-size-xl);
+            }
+
+            :global(h2) {
+                font-size: var(--font-size-lg);
+            }
+        </style>
+    </body>
 </html>
-<style>
-	html {
-		font-family: Popins, system-ui, sans-serif;
-		font-size: var(--font-size-base);
-		color: var(--color-text);
-		background-color: var(--color-bg);
-	}
-
-	body {
-		margin: 0;
-	}
-
-	main {
-		min-height: 90vh;
-		margin: 1rem 6rem;
-	}
-
-	/* On Mobile */
-	@media only screen and (max-width: 768px) {
-		main {
-			margin: 1rem;
-		}
-	}
-
-	:global(h1) {
-		font-size: var(--font-size-xl);
-	}
-
-	:global(h2) {
-		font-size: var(--font-size-lg);
-	}
-</style>

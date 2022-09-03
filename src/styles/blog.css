@@ -14,8 +14,9 @@
 	font-weight: bold;
 }
 
-.blog p {
+.blog {
 	line-height: 1.625;
+	word-spacing: 2px;
 }
 
 .blog ul {

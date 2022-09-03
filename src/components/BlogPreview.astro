@@ -6,7 +6,7 @@ export interface Props {
     url: string;
 }
 
-const { title, description, postdate, url } = Astro.props as Props
+const { title, description, postdate, url } = Astro.props as Props;
 ---
 
 <section class="link-parent column">
@@ -26,7 +26,7 @@ const { title, description, postdate, url } = Astro.props as Props
     section {
         border: 1px var(--color-primary) solid;
         padding: 0.5rem 1rem;
-        transition: all 0.2s cubic-bezier(.17, .84, .44, 1);
+        transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
     }
 
     section.link-parent:hover {

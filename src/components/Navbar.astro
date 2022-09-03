@@ -1,9 +1,22 @@
+---
+export interface Props {
+    githubUrl: string;
+}
+
+const { githubUrl } = Astro.props as Props;
+---
+
 <nav>
     <a class="row" href="/">
-        <img src="/hello-friend-icon.svg" width="50px" height="50px" alt="hello friend icon" />
+        <img
+            src="/hello-friend-icon.svg"
+            width="50px"
+            height="50px"
+            alt="hello friend icon"
+        />
         <h2>Gers Blog</h2>
     </a>
-    <a href="https://github.com/Gers2017" target="_blank" title="Github profile">
+    <a href={githubUrl} target="_blank" title="Github profile">
         <img src="/github.svg" width="40px" height="40px" />
     </a>
 </nav>
@@ -45,7 +58,6 @@
     }
 
     @keyframes vibe {
-
         0%,
         100% {
             background-position-y: 0%;

@@ -1,18 +1,18 @@
 ---
-import "../styles/blog.css"
+import "../styles/blog.css";
 import Layout from "./Layout.astro";
+
 export interface Props {
     content: {
         title: string;
         description: string;
         postdate: string;
         author: string;
-    }
+    };
 }
 
 const { content } = Astro.props as Props;
 const { title, description, postdate, author } = content;
-
 ---
 
 <Layout title={title} description={description}>
@@ -20,7 +20,9 @@ const { title, description, postdate, author } = content;
         <header class="column small">
             <h1>{title}</h1>
             <div class="smug row">
-                <span>&rarr; By {author} Posted on <time>{postdate}</time></span>
+                <span
+                    >&rarr; By {author} Posted on <time>{postdate}</time>
+                </span>
             </div>
         </header>
         <!-- Markdown content here -->

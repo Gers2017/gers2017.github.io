@@ -9,6 +9,8 @@ author: "Gers"
 
 ## Have you ever wonder what would happen if Typescript had a baby with Rust? Because I do!
 
+![crab dancing](https://media.giphy.com/media/2O9yUMWGYSHkI/giphy.gif)
+
 Since I read the [Error Handling section](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html?highlight=Result#recoverable-errors-with-result) of The Rust Programming Language Book I have been thinking: How other languages would _look_ or _feel_ if you borrow some of Rust's ideas and somehow merge them into a Franken-Rust amalgamation.
 
 Join me in this Rust code adventure!
@@ -69,7 +71,7 @@ We could implement our own but it wouldn't be as powerful as the rust one. That 
 
 ## Pattern matching in Typescript
 
-After **many** failed attempts to create a match function in Typescript, I realized that I don't really need to match every posible datatype.
+After **many** failed attempts to create a match function in Typescript, I realized that I don't really need to match every possible datatype.
 
 Instead I could just check if Result has a payload and if it does call the correct callback. Lazy but it works.
 
@@ -108,7 +110,7 @@ let file = match(file_result, {
 });
 ```
 ## The Result type in Typescript
-Hey, but where's the Result type? you might besaying. I'm glad you asked! Well you see at the beginning the **Result** type was very simple and humble type.
+Hey, but where's the Result type? you might be saying. I'm glad you asked! Well you see at the beginning the **Result** type was very simple and humble type.
 
 Honestly I can't take the credit for this, during a code review a Typescript 10x dev proposed the initial Result type.
 It had simple task, be the return type of a function that might fail.
