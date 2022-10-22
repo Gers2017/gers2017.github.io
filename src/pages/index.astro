@@ -2,19 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import BlogPreview from "../components/BlogPreview.astro";
 
-const uposts = await Astro.glob("./posts/*.md");
-const posts = uposts.sort(function (a, b) {
-    return (
+const my_posts = await Astro.glob("./posts/*.md");
+const posts = my_posts.sort(
+    (a, b) =>
         new Date(b.frontmatter.postdate).valueOf() -
         new Date(a.frontmatter.postdate).valueOf()
-    );
-});
-
-const title = "Hello Gers Blog";
-const description = "blog about computer science, nerd stuff and tech";
+);
 ---
 
-<Layout title={title} description={description}>
+<Layout
+    title={"Hello Gers Blog"}
+    description={"blog about computer science, nerd stuff and tech"}
+>
     <div class="grid">
         <ul class="column">
             {
