@@ -7,7 +7,7 @@ postdate: "7 Aug 2022"
 author: "Gers"
 ---
 
-## Have you ever wonder what would happen if Typescript had a baby with Rust? Because I do!
+## Have you ever wonder what would happen if Typescript and Rust had a baby? Because I did!
 
 ![crab dancing](https://media.giphy.com/media/2O9yUMWGYSHkI/giphy.gif)
 
@@ -16,6 +16,7 @@ Since I read the [Error Handling section](https://doc.rust-lang.org/book/ch09-02
 Join me in this Rust code adventure!
 
 ### Introducing Result enums:
+
 ```rs
 enum Result<T, E> {
     Ok(T),
@@ -29,13 +30,14 @@ fn main() {
 
     let file = match file_result {
         Ok(f) => f, // <- Return file inside the Result
-        Err(error) => panic!("Problem opening the file: {:?}", error), 
+        Err(error) => panic!("Problem opening the file: {:?}", error),
         // ^^^ Panics, exits the program and no file was returned
     };
 }
 ```
 
 ### Now the Typescript version of this could be
+
 ```ts
 let file_result = open_file("file.txt");
 
@@ -109,7 +111,9 @@ let file = match(file_result, {
     },
 });
 ```
+
 ## The Result type in Typescript
+
 Hey, but where's the Result type? you might be saying. I'm glad you asked! Well you see at the beginning the **Result** type was very simple and humble type.
 
 Honestly I can't take the credit for this, during a code review a Typescript 10x dev proposed the initial Result type.
@@ -179,7 +183,8 @@ user_result
     .on_error(log_error);
 
 match(user_result, {
-    Ok(payload) { // <- returns void
+    Ok(payload) {
+        // <- returns void
         console.log(`mod == ${payload}`);
     },
     Err(error) {
@@ -199,7 +204,7 @@ console.log("Mapped user:", user_obj);
 
 ## Resources
 
-- [Enums and Pattern Matching - Rust](https://doc.rust-lang.org/book/ch06-00-enums.html)
-- [Recoverable Errors with Result - Rust](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
-- [Utility Types - Typescript](https://www.typescriptlang.org/docs/handbook/utility-types.html)
-- [Generics - Typescript](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+-   [Enums and Pattern Matching - Rust](https://doc.rust-lang.org/book/ch06-00-enums.html)
+-   [Recoverable Errors with Result - Rust](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)
+-   [Utility Types - Typescript](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+-   [Generics - Typescript](https://www.typescriptlang.org/docs/handbook/2/generics.html)

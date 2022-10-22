@@ -6,12 +6,13 @@ description: "Learn how to sign your commits using GPG or SSH keys"
 postdate: "2 Sep 2022"
 author: "Gers"
 ---
-# Sign your Commits!!!
+
+## Sign your Commits!!!
 
 ![RUN](https://media.giphy.com/media/7kn27lnYSAE9O/giphy.gif)
 ![Keep calm](https://media.giphy.com/media/p9bj7nrUPAypq/giphy.gif)
 
-If you happen to be a github user then you might have seen this \"Verified\" signature next to some commits.
+If you happen to be a github user then you might have seen this **Verified** signature next to some commits.
 
 What does it mean? Are they part of secret society of Verified users? should I be signing my commits too?
 
@@ -21,11 +22,12 @@ Let's be real here, we all like shiny green badges next to our commits, it give 
 Good news! In this blog-post you're going to learn how to sign your commits using GPG or SSH.
 
 ## Table of contents
-- [Using GPG to sign commits](#using-gpg-to-sign-commits)
-- [Add GPG key to Github](#add-gpg-key-to-github)
-- [Configure Git to use GPG key](#configure-git-to-use-gpg-key)
-- [Using SSH keys to Sign Commits](#using-ssh-keys-to-sign-commits)
-- [Resources](#resources)
+
+-   [Using GPG to sign commits](#using-gpg-to-sign-commits)
+-   [Add GPG key to Github](#add-gpg-key-to-github)
+-   [Configure Git to use GPG key](#configure-git-to-use-gpg-key)
+-   [Using SSH keys to Sign Commits](#using-ssh-keys-to-sign-commits)
+-   [Resources](#resources)
 
 ## Using GPG to sign commits
 
@@ -33,9 +35,11 @@ Before we get started, please check the version of `gpg` is up to date by runnin
 Mine is `gpg (GnuPG) 2.2.37`.
 
 ### Generate the GPG key
-```sh
+
+```bash
 gpg --full-generate-key
 ```
+
 1. what kind of key you want: select RSA (sign only) by typing `4` and hit `Enter`
 2. keysize: type `4096` and hit `Enter`
 3. how long the key should be valid: recommended `2y` or `3y`
@@ -50,14 +54,17 @@ Answer the questions:
     - personal recommendation: create a passphrase made of `12` to `16` characters with at least one special character (`$, #, @, ...`)
 
 ### Test the GPG key
-```sh
+
+```bash
 echo 'hi!' | gpg --clear-sign > test.txt
 gpg --verify test.txt
 ```
+
 It should say something like: `Good signature from "USERNAME (Test Key) <example@email.com>"`
 
 ### Get the GPG key ID
-```sh
+
+```bash
 gpg --list-secret-keys --keyid-format=long
 # or
 gpg -K --keyid-format=short
@@ -72,8 +79,10 @@ uid         [ultimate] USERNAME (Test Key) <example@email.com>
 In this case the key ID is `A537823F` (from `rsa4096/A537823F`)
 
 ### Add GPG key to Github
-- Get the public key
-    ```sh
+
+-   Get the public key
+
+    ```bash
     gpg --armor --export A537823F
 
     # generated key
@@ -81,92 +90,96 @@ In this case the key ID is `A537823F` (from `rsa4096/A537823F`)
     # ....
     # -----END PGP PUBLIC KEY BLOCK-----
     ```
-- Copy the generated key
-- Go to [SSH and GPG keys on github](https://github.com/settings/keys) or [Add new GPG key on github](https://github.com/settings/gpg/new)
-    - [More details here](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
-- Paste the generated key
-- Click `Add GPG key`
+
+-   Copy the generated key
+-   Go to [SSH and GPG keys on github](https://github.com/settings/keys) or [Add new GPG key on github](https://github.com/settings/gpg/new)
+    -   [More details here](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
+-   Paste the generated key
+-   Click `Add GPG key`
 
 ### Configure Git to use GPG key
 
 With the key ID `A537823F`
 
-- Add signingkey
-    ```sh
+-   Add signingkey
+    ```bash
     git config --global user.signingkey A537823F
     ```
-- Enable sign for all commits and tags
-    ```sh
+-   Enable sign for all commits and tags
+    ```bash
     git config --global commit.gpgSign true
     git config --global tag.gpgSign true
     ```
-- Set your name and email
-    ```sh
+-   Set your name and email
+    ```bash
     git config --global user.name USERNAME
     git config --global user.email example@email.com
     ```
 
 ### Gpg agent configuration
- - Export GPG_TTY
+
+-   Export GPG_TTY
     append the following to your `.bashrc` / `.zshrc` or your initialization file
-    ```sh
+
+    ```bash
     export GPG_TTY=$(tty)
 
     # For fish users:
     set -x GPG_TTY $(tty)
     ```
-- Configure gpg.conf
-    - create `~/.gnupg/gpg.conf`
-    - append `use-agent` to `~/.gnupg/gpg.conf`
+
+-   Configure gpg.conf
+    -   create `~/.gnupg/gpg.conf`
+    -   append `use-agent` to `~/.gnupg/gpg.conf`
 
 ## Using SSH keys to Sign Commits
 
 If you don't have a ssh key already, check:
-- [Generating a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
- - [Adding a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+-   [Generating a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+-   [Adding a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
 **Don't forget** to set the Key type to `Signing key`
 
 If you do have one, then:
 
 ### Configure git to use ssh
-```sh
+
+```bash
 git config --global gpg.format ssh
 ```
+
 ### Copy your public ssh key
-```sh
+
+```bash
 cat ~/.ssh/id_ed25519.pub
 ```
+
 ### Set the signkey to your public ssh key (replace the text inside the quotes)
-```sh
+
+```bash
 # Beware of the quotes
-git config --global user.signingkey 'ssh-ed25519 AAAAC3(...) example@email.com'
+git config --global user.signingkey 'key::ssh-ed25519 AAAAC3(...) example@email.com'
 ```
-### Add your public ssh key to `~/.config/git/allowed_signers`
-```sh
-example@email.com ssh-ed25519 ssh-ed25519 AAAAC3(...) example@email.com example@email.com
-```
-### Let Git know about this file
-```sh
-git config --global gpg.ssh.allowedSignersFile ~/.config/git/allowed_signers
-```
+
 ### Verify your signed commit
-```sh
+
+```bash
 git commit -m "Some message"
 
 # Verify the commit
 
 git verify-commit 488a8d82 # get the hash with git log
-# Or 
+# Or
 git log --show-signature
 ```
 
-
 ## Resources
-- [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
-- [Signing Git Commits with SSH Keys](https://blog.dbrgn.ch/2021/11/16/git-ssh-signatures/)
-- [About signature verification - Github Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
-- [Tell git about your keys - Github Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
-- [Generate a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-- [GPG agent](https://linux.die.net/man/1/gpg-agent)
-- [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices)
+
+-   [About signature verification - Github Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
+-   [Generate a new SSH key - Github Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+-   [Tell git about your keys - Github Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+-   [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
+-   [Signing Git Commits with SSH Keys](https://blog.dbrgn.ch/2021/11/16/git-ssh-signatures/)
+-   [GPG agent](https://linux.die.net/man/1/gpg-agent)
+-   [OpenPGP Best Practices](https://riseup.net/en/security/message-security/openpgp/best-practices)
