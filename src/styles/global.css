@@ -1,17 +1,20 @@
 :root {
-    --font-size-base: clamp(1.025rem, 0.35vw, 1.2rem);
+    --font-size-s: 0.8rem;
+    --font-size-base: 1.2rem;
+    --font-size-med: 1.5rem;
     --font-size-lg: 2rem;
     --font-size-xl: 3rem;
 
-    --color-text: #FFFFFF;
-    --color-border: #EEEEEE;
-    --color-bg: #151A23;
+    --color-text: #ffffff;
+    --color-border: #eeeeee;
+    --color-bg: #151a23;
     --color-bg-pale: #1a1f29;
-    --color-bg-gray: #323B49;
-    --color-primary: #00B19A;
+    --color-bg-gray: #323b49;
+    --color-primary: #00b19a;
     --color-primary-dark: #009985;
     --color-primary-transparent: hsl(172, 100%, 35%, 0.3);
-    --color-contrast: #C74B64;
+    --color-contrast: #c74b64;
+    --cool-gradient: linear-gradient(0deg, #7765ff, var(--color-primary));
 
     /* 
         Extra Small = xs
@@ -28,45 +31,98 @@
     --pad-lg: 3rem;
     --pad-xl: 4rem;
 
-    --font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
-        Apple Color Emoji, Segoe UI Emoji;
-    --font-body: 'IBM Plex Sans', var(--font-fallback);
-    --font-mono: 'IBM Plex Mono', Monaco, Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-        'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
-        'Nimbus Mono L', 'Courier New', Courier, monospace;
+    --font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+        Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    --font-body: Popins, system-ui, sans-serif, "IBM Plex Sans",
+        var(--font-fallback);
+    --font-mono: "IBM Plex Mono", Monaco, Consolas, "Andale Mono WT",
+        "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
+        "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono",
+        "Nimbus Mono L", "Courier New", Courier, monospace;
     color-scheme: dark;
 }
 
+html {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+body {
+    margin: 0;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+main {
+    min-height: 90vh;
+    max-width: 1260px;
+}
+
+/* desktop */
+@media only screen and (min-width: 1260px) {
+    main {
+        max-width: 1260px;
+        margin: 1rem auto;
+    }
+}
+
+/* On Mobile */
+@media only screen and (max-width: 1260px) {
+    main {
+        max-width: unset;
+        margin: 1rem 0.5rem;
+    }
+}
+
+h1 {
+    font-size: var(--font-size-xl);
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 /* utility classes */
+
 .column {
     display: flex;
     flex-direction: column;
+}
+
+.gap-small {
     gap: var(--pad-s);
 }
 
-.column.small {
-    gap: var(--pad-s);
-}
-
-.column.no-gap {
-    gap: 0;
+.gap-medium {
+    gap: var(--pad-med);
 }
 
 .row {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: var(--pad-s);
     flex-wrap: wrap;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: var(--pad-ls) 0;
 }
 
 a {
     text-decoration: none;
-    color: var(--color-primary);;
+    color: var(--color-primary);
 }
 
 .link {
@@ -80,7 +136,7 @@ a {
     height: 4px;
     content: "";
     display: block;
-    transition: all 0.2s cubic-bezier(.17,.84,.44,1);
+    transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
     background-color: var(--color-primary);
 }
 
@@ -106,8 +162,79 @@ button:hover {
 
 blockquote {
     margin-left: 0px;
-	background-color: var(--color-bg-pale);
-	color: var(--color-border);
-	padding: 0.4rem;
+    background-color: var(--color-bg-pale);
+    color: var(--color-border);
+    padding: 0.4rem;
     padding-left: var(--pad-med);
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+nav h2 {
+    margin: 0;
+    font-weight: 900;
+    background-image: var(--cool-gradient);
+    background-size: 100% 200%;
+    border-radius: 0.5rem;
+    background-position-y: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: vibe 4s ease infinite;
+}
+
+/* On Mobile */
+@media only screen and (max-width: 500px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes vibe {
+    0%,
+    100% {
+        background-position-y: 0%;
+    }
+
+    50% {
+        background-position-y: 80%;
+    }
+}
+
+/* Blog Preview */
+
+section.blog-preview {
+    /* width: 600px; */
+    border: 1px var(--color-primary) solid;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+
+section.blog-preview.link-parent:hover {
+    transform: scale(1.05);
+    box-shadow: 8px 4px 0px var(--color-primary-transparent);
+}
+
+section.blog-preview *:is(h2, p, time, ) {
+    margin: 0;
+}
+
+a {
+    width: max-content;
 }

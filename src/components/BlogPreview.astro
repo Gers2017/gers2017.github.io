@@ -9,8 +9,8 @@ export interface Props {
 const { title, description, postdate, url } = Astro.props as Props;
 ---
 
-<section class="link-parent column">
-    <header class="row">
+<section class="blog-preview link-parent column gap-small">
+    <header class="row gap-small">
         <a href={url}>
             <h2 class="link">{title}</h2>
         </a>
@@ -21,33 +21,3 @@ const { title, description, postdate, url } = Astro.props as Props;
         <button>Read more</button>
     </a>
 </section>
-
-<style>
-    section {
-        border: 1px var(--color-primary) solid;
-        padding: 0.5rem 1rem;
-        transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
-    }
-
-    section.link-parent:hover {
-        transform: scale(1.05);
-        box-shadow: 8px 4px 0px var(--color-primary-transparent);
-    }
-
-    h2,
-    p,
-    time {
-        margin: 0;
-    }
-
-    a {
-        width: max-content;
-    }
-
-    /* On Mobile */
-    @media only screen and (max-width: 768px) {
-        section h2 {
-            font-size: 1.5rem;
-        }
-    }
-</style>

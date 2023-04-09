@@ -17,12 +17,10 @@ const { title, description, postdate, author } = content;
 
 <Layout title={title} description={description}>
     <div class="blog">
-        <header class="column small">
+        <header class="column gap-small">
             <h1>{title}</h1>
             <div class="smug row">
-                <span
-                    >&rarr; By {author} Posted on <time>{postdate}</time>
-                </span>
+                <span>&rarr; By {author} | <time>{postdate}</time></span>
             </div>
         </header>
         <!-- Markdown content here -->
