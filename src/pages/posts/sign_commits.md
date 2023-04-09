@@ -7,19 +7,21 @@ postdate: "2 Sep 2022"
 author: "Gers"
 ---
 
-## Sign your Commits!!!
+## You need sign your commits right now!!!
 
 ![RUN](https://media.giphy.com/media/7kn27lnYSAE9O/giphy.gif)
 ![Keep calm](https://media.giphy.com/media/p9bj7nrUPAypq/giphy.gif)
 
-If you happen to be a github user then you might have seen this **Verified** signature next to some commits.
+If you happen to be a github user (like most of the software developers out there) you might have seen a "Verified" green badge next to some commits.
 
-What does it mean? Are they part of secret society of Verified users? should I be signing my commits too?
+-   What does it mean?
+-   Are they part of secret society of Verified users?
+-   Should I be signing my commits too?
+-   Is math related to cryptography?
+
+Let's be real here, we all like shiny green badges. And that's enough reason to sign our commits.
 
 ![Github Signed Commit](https://docs.github.com/assets/cb-13111/images/help/commits/verified-commit.png)
-
-Let's be real here, we all like shiny green badges next to our commits, it give us a sense of power (just like neovim users!)
-Good news! In this blog-post you're going to learn how to sign your commits using GPG or SSH.
 
 ## Table of contents
 
@@ -31,7 +33,12 @@ Good news! In this blog-post you're going to learn how to sign your commits usin
 
 ## Using GPG to sign commits
 
-Before we get started, please check the version of `gpg` is up to date by running `gpg --version`
+Before we get started, please check the version of `gpg` is up to date by running:
+
+```
+gpg --version
+```
+
 Mine is `gpg (GnuPG) 2.2.37`.
 
 ### Generate the GPG key
