@@ -1,9 +1,5 @@
 ---
-export interface Props {
-    githubUrl: string;
-}
-
-const { githubUrl } = Astro.props as Props;
+import { GITHUB_URL, MASTODON_URL } from "../_constants";
 ---
 
 <nav>
@@ -16,8 +12,14 @@ const { githubUrl } = Astro.props as Props;
         />
         <h2>Gers Blog</h2>
     </a>
-    <a href={githubUrl} target="_blank" title="Github profile">
-        <img src="/github.svg" width="40px" height="40px" />
-    </a>
-</nav>
 
+    <div class="row gap-medium">
+        <a rel="me" target="_blank" href={MASTODON_URL}>
+            <img src="/mastodon.svg" width="40px" height="40px" />
+        </a>
+
+        <a href={GITHUB_URL} target="_blank" title="Github profile">
+            <img src="/github.svg" width="40px" height="40px" />
+        </a>
+    </div>
+</nav>

@@ -10,7 +10,7 @@ export interface LayoutProps {
 }
 
 const { title, description } = Astro.props as LayoutProps;
-import {GITHUB_URL, AUTHOR} from "../_constants"
+import { AUTHOR } from "../_constants";
 ---
 
 <html lang="en">
@@ -19,7 +19,7 @@ import {GITHUB_URL, AUTHOR} from "../_constants"
     </head>
 
     <body>
-        <Navbar githubUrl={GITHUB_URL} />
+        <Navbar />
         <main>
             <slot />
         </main>

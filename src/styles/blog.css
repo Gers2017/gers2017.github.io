@@ -5,17 +5,29 @@
     margin: 0;
 }
 
+.blog {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .blog {
+        max-width: unset;
+        margin: 0 1rem;
+    }
+}
+
 .smug {
     font-size: var(--font-size-s);
     background-color: var(--color-bg-gray);
-    color: var(--color-border);
     padding: 0.4rem;
     width: max-content;
     font-weight: bold;
+    border-radius: 4px;
 }
 
 .blog *:is(h1, h2, h3, h4, h5, h6, p, li) {
-    line-height: 1.5;
+    line-height: 1.3;
 }
 
 .blog ul {
@@ -24,10 +36,12 @@
     gap: 0.5rem;
 }
 
+/* highlight */
 .blog code {
     background-color: var(--color-bg-gray);
-    border-radius: 8px;
-    padding: 2px 8px;
+    border-radius: 4px;
+    padding: 0rem 0.1rem;
+    margin: 0.02rem 0.05rem;
     display: inline-flex;
     align-items: center;
 }
@@ -36,7 +50,9 @@
     all: unset;
 }
 
+/* code snippet */
 pre.astro-code {
+    font-size: var(--font-size-code);
     padding: 1rem;
     border-radius: 8px;
     font-family: var(--font-mono);

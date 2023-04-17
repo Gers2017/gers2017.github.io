@@ -7,7 +7,7 @@ const { author } = Astro.props as Props;
 ---
 
 <footer>
-    <div class="row">
+    <div class="row gap-small">
         <span>Made with 💗 by {author}</span>
         <span>⚡ Powered by <a href="https://astro.build/">Astro</a></span>
     </div>
@@ -20,7 +20,6 @@ const { author } = Astro.props as Props;
         align-items: center;
         color: var(--color-text);
         font-weight: bold;
-        margin-top: 1rem;
         padding: 1rem;
         background-color: var(--color-bg-pale);
         min-height: 10vh;

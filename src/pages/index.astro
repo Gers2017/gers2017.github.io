@@ -39,10 +39,14 @@ const posts = my_posts.sort(
     }
 
     /* On Mobile */
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 800px) {
         .preview-list {
             max-width: unset;
             margin: 0;
+        }
+
+        .preview-list ul {
+            padding-left: 0;
         }
     }
 </style>
