@@ -34,19 +34,19 @@ const posts = my_posts.sort(
 
 <style>
     .preview-list {
-        max-width: 50%;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .preview-list ul {
+        padding-left: 0;
     }
 
     /* On Mobile */
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 860px) {
         .preview-list {
             max-width: unset;
             margin: 0;
-        }
-
-        .preview-list ul {
-            padding-left: 0;
         }
     }
 </style>
