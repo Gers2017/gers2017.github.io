@@ -2,9 +2,16 @@
 layout: ../../layouts/BlogLayout.astro
 
 title: "Building my own search engine"
-description: "How I built my own local-first search engine so I could search episodes from the linux unplugged podcast"
+description: "How I built a local-first search engine to search for podcast episodes"
 postdate: "9 Apr 2023"
 author: "Gers"
+tags:
+    - rust
+    - web
+    - trie
+    - python
+    - search
+    - podcast
 ---
 
 ## Why not just use Google?
@@ -147,18 +154,18 @@ for (tag, episodes) in episodes_by_tag.iter() {
         .iter()
         .any(|term| tag.contains(term) || term.contains(tag))
     {
-        search_results.extend(episodes.iter().map(|episode| (**episode).clone()));
+        results.extend(episodes.iter().map(|episode| (**episode).clone()));
     }
 }
 ```
 
 **You**: _Fancy, but what if a tag is related to another tag? you could take advantage of that._
 
-For example the tag `docker` is related to the tag `docker-compose` but if we search for: **"docker"** we won't get any episode related to `docker-compose` because of how we process the search query.
+For example the tag `docker` is related to the tag `docker-compose`, but if we search for **"docker"** we can't guarantee that we will get an episode related to `docker-compose` because of how we process the search query. And we _could_ take advantage of that fact to reduce the number of searches. To be fair related tags tend to stick together (_usually_) so in theory it shouldn't be a problem.
 
-To be fair the related tags tend to stick together (_usually_) so in theory it shouldn't be a problem.
+More features! what if the user wants to search for multiple tags? or maybe the user wants to search for an exact keyword that contains whitespace.
 
-But what if the user wants to search multiple tags?
+In this case we need to process the search query before using it. For that we'll turn back to the **dark magic** of lexers and parsers. For example:
 
 ```ts
 type SearchResults = Set<Episode>
@@ -169,10 +176,13 @@ function search(query: string): SearchResults {
 search("docker .local nixos")
 ```
 
-In this case we need to process the search query before using it. For that we'll turn back to the **dark magic** of lexers and parsers.
-
 ```
 terms = []
+docker .local nixos
+ ^-- keep going
+
+...
+
 docker .local nixos
     ^-- keep going
 
@@ -189,6 +199,8 @@ docker .local nixos
                    ^-- found whitespace! add 'nixos' to terms
 ```
 
+An example with ""
+
 ```
 terms = []
 "docker compose" nixos
@@ -201,16 +213,14 @@ terms = []
 
 With the parser working we have extracted the keyword / search terms from the search query.
 Now we'll use that to search for more episodes.
-
-We could (and probably should) add support for more operators but I think is fine _for now_.
+We could (and probably should) add support for more operators but I think this is ok _for now_.
 
 ### Searching by titles 🔎
 
-What if the user search an episode not by tag, not by id, just by title or a partial title?
-
+What if the user searches an episode not by tag, not by id, just by title or a partial title?
 Remember that section that you **TOTALLY** didn't skip, well we'll break every rule in the book for learning purposes.
 
-You see, the thing is we didn't stored the episodes by it's title so the only way we have to know if a term is inside a title is by looping through all the episodes.
+You see, the thing is we didn't store the episodes by it's title so the only way we have to know if a term is inside a title is by looping through all the episodes.
 
 Yep that doesn't spark joy to me ✨🥹. But we'll do it anyways.
 
@@ -218,12 +228,18 @@ Here's the code
 
 ```rs
 for (id, episode) in state.episodes_by_id.iter() {
+    if results.contains(episode) {
+        continue;
+    }
+
     let episode_id = id.to_string();
 
     if terms.contains(&episode_id)
-        || terms.iter().any(|term| episode.title.to_lowercase().contains(term))
+        || terms
+            .iter()
+            .any(|term| episode.title.to_lowercase().contains(term))
     {
-        search_results.insert(episode.clone());
+        results.insert(episode.clone());
     }
 }
 ```
@@ -235,14 +251,14 @@ But this time is different
 
 ### Ranking system
 
-With our search engine in a functional state, the only thing left to do is return the search results.
-
-But before returning it we need to figure out a way to sort the results. Because some episodes match the search terms better that others.
+With our search engine in a functional state, the only thing left to do is to return the search results. But before doing that we need to figure out a way to sort the results, a ranking system you want. Keep in mind that some episodes suit better the search terms than others.
 
 For that purpose I arbitrarily decided to give 50 points for every search term that matched a tag and 100 points for every search term that matched the title.
 
+The code for the ranking system:
+
 ```rs
-let mut search_results_with_score: Vec<_> = search_results
+let mut results_with_score: Vec<_> = results
     .iter()
     .map(|episode| {
         let mut score = episode.tags.iter().fold(0, |acc, tag| {
@@ -268,8 +284,9 @@ let mut search_results_with_score: Vec<_> = search_results
     .collect();
 ```
 
-Ok, we're done.
-
+We iterate over the results, we map every episode tag to a score, 50 if the tag matches the search term else 0.
+After that we iterate over the search terms, we map every episode title to a score, 100 if there's a match else 0.
+At the end we return a tuple of score and episode.
 And with that. We can **Finally** return the search results to the user:
 
 ![The search engine in action](/assets/unplugged-engine.gif)
