@@ -71,3 +71,18 @@ pre.astro-code code {
     overflow-y: hidden;
     overflow-x: auto;
 }
+
+/* table css */
+
+tr > th, tr > td {
+    padding: 0.25rem 0.75rem;
+}
+
+thead {
+    box-shadow: 0px 1px 0px 0px var(--color-gray-light);
+}
+
+table {
+    border-radius: 4px;
+    border: 1px solid var(--color-gray-light);
+}
