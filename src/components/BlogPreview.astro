@@ -4,43 +4,57 @@ export interface Props {
     description: string;
     postdate: string;
     url: string;
+    tags?: string[];
 }
 
-const { title, description, postdate, url } = Astro.props as Props;
+const { title, description, postdate, url, tags } = Astro.props as Props;
 ---
 
 <section class="blog-preview link-parent column gap-small">
-    <a href={url}>
-        <h2 class="link">{title}</h2>
-    </a>
+    <header>
+        <a href={url}>
+            <h2 class="link">{title}</h2>
+        </a>
+        {
+            tags && (
+                <ul class="tags">
+                    {tags.map((tag) => (
+                        <li class="tag">#{tag}</li>
+                    ))}
+                </ul>
+            )
+        }
+    </header>
     <p>{description}</p>
-    <header class="row gap-small">
+    <footer>
         <a href={url}>
             <button>Read more</button>
         </a>
         <time>{postdate}</time>
-    </header>
+    </footer>
 </section>
 
 <style>
     section.blog-preview {
         border: 1px var(--color-primary) solid;
+        border-radius: 4px;
         padding: 0.5rem 1rem;
-        transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
+        transition: all 0.1s cubic-bezier(0.17, 0.84, 0.44, 1);
         max-width: 600px;
     }
 
     section.blog-preview h2 {
         font-size: var(--font-size-lg);
+        padding: 0.25rem 0;
     }
 
-    section.blog-preview:hover *:is(h2) {
+    section.blog-preview:is(:hover, :focus-within) h2 {
         color: var(--color-primary-dark);
     }
 
-    section.blog-preview.link-parent:hover {
+    section.blog-preview.link-parent:is(:hover, :focus-within) {
         transform: scale(1.05);
-        box-shadow: 8px 4px 0px var(--color-primary-transparent);
+        box-shadow: 8px 8px 0px var(--color-primary-transparent);
     }
 
     section.blog-preview *:is(h2, p, time) {
@@ -55,5 +69,33 @@ const { title, description, postdate, url } = Astro.props as Props;
     time {
         color: var(--color-primary);
         font-weight: 600;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        max-width: fit-content;
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    ul.tags {
+        display: flex;
+        gap: 0.1rem;
+        padding-left: 0;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        list-style: none;
+        padding: 0.1rem 0.25rem;
+        border-radius: 4px;
+        color: var(--color-primary);
+        font-size: var(--font-size-sm);
     }
 </style>
