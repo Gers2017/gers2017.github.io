@@ -5,6 +5,7 @@ title: "How to sign your commits"
 description: "Learn how to sign your commits using GPG or SSH keys"
 postdate: "2 Sep 2022"
 author: "Gers"
+tags: [git, github, ssh]
 ---
 
 ## You need sign your commits right now!!!

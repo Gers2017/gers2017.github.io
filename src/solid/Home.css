@@ -1,0 +1,59 @@
+/* Search */
+.top-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 300px;
+    font-size: var(--font-size);
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+    padding-left: 2.2rem;
+    border: 1px solid #949494;
+    transition: border 200ms ease-in-out;
+    outline: none;
+    background-color: var(--color-bg-pale);
+    background-repeat: no-repeat;
+    background-image: url("/search-icon.svg");
+    background-size: 20px 20px;
+    background-position: 8px;
+    background-position-y: center;
+}
+
+/* -- mobile -- */
+@media only screen and (max-width: 768px) {
+    .search-bar input {
+        max-width: unset;
+    }
+}
+
+.search-bar input:hover {
+    border: 1px solid #ffffff;
+}
+
+.search-bar input::placeholder {
+    color: #cccccc;
+    font-weight: bold;
+}
+
+/* ShowPosts */
+.preview-list {
+    display: flex;
+    justify-content: center;
+}
+
+.preview-list ul {
+    padding-left: 0;
+}
+
+/* -- mobile -- */
+@media only screen and (max-width: 860px) {
+    .preview-list {
+        max-width: unset;
+        margin: 0;
+    }
+}

@@ -3,5 +3,5 @@ export interface PostMetaData {
     description: string;
     postdate: string;
     author: string;
-    tags?: string[];
+    tags: string[];
 }

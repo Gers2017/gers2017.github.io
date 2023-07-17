@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import BlogPreview from "../components/BlogPreview.astro";
 import type { PostMetaData } from "../_types";
+import Home from "../solid/Home";
 
 const my_posts = await Astro.glob<PostMetaData>("./posts/*.md");
 
@@ -16,38 +16,5 @@ const posts = my_posts.sort(
     title={"Hello Gers Blog"}
     description={"blog about computer science, nerd stuff and tech"}
 >
-    <div class="preview-list">
-        <ul class="column gap-medium">
-            {
-                posts.map(({ url, frontmatter }) => (
-                    <BlogPreview
-                        title={frontmatter.title}
-                        description={frontmatter.description}
-                        postdate={frontmatter.postdate}
-                        url={url!}
-                        tags={frontmatter.tags}
-                    />
-                ))
-            }
-        </ul>
-    </div>
+    <Home posts={posts} client:load />
 </Layout>
-
-<style>
-    .preview-list {
-        display: flex;
-        justify-content: center;
-    }
-
-    .preview-list ul {
-        padding-left: 0;
-    }
-
-    /* On Mobile */
-    @media only screen and (max-width: 860px) {
-        .preview-list {
-            max-width: unset;
-            margin: 0;
-        }
-    }
-</style>
