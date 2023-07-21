@@ -1,26 +1,31 @@
 ---
 import "../styles/blog.css";
 import Layout from "./Layout.astro";
+import type { PostMetaData } from "../_types";
 
 export interface Props {
-    content: {
-        title: string;
-        description: string;
-        postdate: string;
-        author: string;
-    };
+    content: PostMetaData;
 }
 
 const { content } = Astro.props as Props;
-const { title, description, postdate, author } = content;
+const { title, description, postdate, tags } = content;
 ---
 
 <Layout title={title} description={description}>
     <div class="blog">
-        <header class="column gap-small">
+        <header class="column gap-xs">
             <h1>{title}</h1>
-            <div class="smug row">
-                <span>&rarr; By {author} | <time>{postdate}</time></span>
+            {
+                tags.length > 0 && (
+                    <ul class="tags">
+                        {tags.length > 0 && tags.map((tag) => <li>#{tag}</li>)}
+                    </ul>
+                )
+            }
+            <div class="bottom">
+                <div class="smug">
+                    <span>&rarr; <time>{postdate}</time></span>
+                </div>
             </div>
         </header>
         <!-- Markdown content here -->

@@ -1,8 +1,8 @@
-import { createSignal, type Setter, type Accessor, For } from "solid-js";
-import "./Home.css";
+import { createSignal, type Setter, type Accessor } from "solid-js";
 import BlogPreview from "./BlogPreview";
 import type { PostMetaData } from "../_types";
 import type { MarkdownInstance } from "astro";
+import "./Home.css";
 
 type Post = MarkdownInstance<PostMetaData>;
 type Posts = Post[];
@@ -30,7 +30,7 @@ function Search({ set_state }: { set_state: Setter<string> }) {
     }
 
     return (
-        <div class="top-container search-bar">
+        <div class="search-bar">
             <input type="text" placeholder="Search" oninput={handle_on_input} />
         </div>
     );

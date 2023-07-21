@@ -1,6 +1,7 @@
 .blog header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
+
 .blog header > * {
     margin: 0;
 }
@@ -33,12 +34,6 @@
 
 .blog *:is(p, ul, ol, article) {
     line-height: 1.45rem;
-}
-
-.blog ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
 }
 
 /* highlight */

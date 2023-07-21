@@ -66,8 +66,7 @@ body {
 
 /* Warning: global for all layouts */
 main {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
 }
 
 h1 {
@@ -88,6 +87,10 @@ ul {
 .column {
     display: inline-flex;
     flex-direction: column;
+}
+
+.gap-xs {
+    gap: var(--pad-xs);
 }
 
 .gap-small {
@@ -119,25 +122,19 @@ a {
     color: var(--color-primary);
 }
 
-.link {
-    position: relative;
+ul.tags {
+    display: flex;
+    gap: 0.1rem;
+    padding-left: 0;
+    flex-wrap: wrap;
 }
 
-.link::after {
-    position: absolute;
-    left: 0px;
-    width: 0%;
-    height: 2px;
-    content: "";
-    display: block;
-    transition: all 0.2s ease-in-out;
+ul.tags li {
+    list-style: none;
+    padding: 0.1rem 0.25rem;
     border-radius: 4px;
-    background-color: var(--color-primary-dark);
-}
-
-.link-parent:is(:hover, :focus-within) .link::after {
-    width: 100%;
-    left: 10px;
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
 }
 
 button {
@@ -175,7 +172,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-primary);
 }
 
 nav h2 {

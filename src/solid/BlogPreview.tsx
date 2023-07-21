@@ -1,5 +1,4 @@
 import "./BlogPreview.css";
-
 import { type PostMetaData } from "../_types";
 
 interface Props extends PostMetaData {
@@ -10,18 +9,18 @@ export default function BlogPreview(props: Props) {
     const { title, description, postdate, url, tags } = props;
 
     return (
-        <section class="blog-preview link-parent column gap-small">
+        <section class="blog-preview column gap-small">
             <header>
                 <a href={url}>
                     <h2 class="link">{title}</h2>
                 </a>
-                {
+                {tags.length > 0 && (
                     <ul class="tags">
                         {tags.map((tag) => (
-                            <li class="tag">#{tag}</li>
+                            <li>#{tag}</li>
                         ))}
                     </ul>
-                }
+                )}
             </header>
             <p>{description}</p>
             <footer>
