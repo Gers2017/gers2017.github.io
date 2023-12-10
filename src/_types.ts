@@ -5,3 +5,10 @@ export interface PostMetaData {
     author: string;
     tags: string[];
 }
+
+export interface LayoutProps {
+    title?: string;
+    description?: string;
+}
+
+export type BaseHeadProps = Required<LayoutProps>;

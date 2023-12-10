@@ -1,5 +1,5 @@
 ---
-import { GITHUB_URL, MASTODON_URL } from "../_constants";
+import { BlogMeta } from "../_constants";
 ---
 
 <nav>
@@ -14,11 +14,11 @@ import { GITHUB_URL, MASTODON_URL } from "../_constants";
     </a>
 
     <div class="row gap-medium">
-        <a rel="me" target="_blank" href={MASTODON_URL}>
+        <a rel="me" target="_blank" href={BlogMeta.links.mastodon}>
             <img src="/mastodon.svg" width="40px" height="40px" />
         </a>
 
-        <a href={GITHUB_URL} target="_blank" title="Github profile">
+        <a href={BlogMeta.links.github} target="_blank" title="Github profile">
             <img src="/github.svg" width="40px" height="40px" />
         </a>
     </div>

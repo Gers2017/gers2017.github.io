@@ -12,9 +12,6 @@ const posts = my_posts.sort(
 );
 ---
 
-<Layout
-    title={"Gers Blog"}
-    description={"blog about computer science, nerd stuff and tech"}
->
+<Layout>
     <Home posts={posts} client:load />
 </Layout>

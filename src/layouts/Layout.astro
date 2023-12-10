@@ -3,14 +3,14 @@ import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { BlogMeta, merge_with_title } from "../_constants";
+import type { LayoutProps } from "../_types";
 
-export interface LayoutProps {
-    title: string;
-    description: string;
-}
-
-const { title, description } = Astro.props as LayoutProps;
-import { AUTHOR } from "../_constants";
+const props = Astro.props as LayoutProps;
+const title = props.title ? merge_with_title(props.title) : BlogMeta.title;
+const description = props.description
+    ? merge_with_title(props.description)
+    : BlogMeta.description;
 ---
 
 <html lang="en">
@@ -23,7 +23,7 @@ import { AUTHOR } from "../_constants";
         <main>
             <slot />
         </main>
-        <Footer author={AUTHOR} />
+        <Footer author={BlogMeta.author} />
         <style>
             main {
                 min-height: 80vh;
