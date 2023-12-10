@@ -12,10 +12,10 @@
     "astro-help": "astro --help"
   },
   "devDependencies": {
-    "astro": "^2.2.1"
+    "astro": "^2.10.15"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^2.2.0",
-    "solid-js": "^1.4.3"
+    "@astrojs/solid-js": "^2.2.1",
+    "solid-js": "^1.8.7"
   }
 }
