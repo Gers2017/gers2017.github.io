@@ -3,15 +3,9 @@ layout: ../../layouts/BlogLayout.astro
 
 title: "Building my own search engine"
 description: "How I built a local-first search engine to search for podcast episodes"
-postdate: "9 Apr 2023"
+postdate: "April 9 2023"
 author: "Gers"
-tags:
-    - rust
-    - web
-    - trie
-    - python
-    - search
-    - podcast
+tags: [rust, web, web-scrapping, search, trie, python, linux, podcast]
 ---
 
 ## Why not just use Google?

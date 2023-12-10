@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 
 title: "Hello Friend"
 description: "Learn typescript in 10 seconds! utility types and all!"
-postdate: "5 Aug 2022"
+postdate: "August 5 2022"
 author: "Gers"
 tags: []
 ---

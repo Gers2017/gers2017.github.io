@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 
 title: "How to sign your commits"
 description: "Learn how to sign your commits using GPG or SSH keys"
-postdate: "2 Sep 2022"
+postdate: "September 2 2022"
 author: "Gers"
 tags: [git, github, ssh]
 ---

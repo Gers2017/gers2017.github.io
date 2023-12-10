@@ -3,11 +3,9 @@ layout: ../../layouts/BlogLayout.astro
 
 title: "Typescript + Rust = Trust"
 description: "Trust: Using Rust's Result and Some enum in Typescript"
-postdate: "7 Aug 2022"
+postdate: "August 7 2022"
 author: "Gers"
-tags:
-    - typescript
-    - rust
+tags: [typescript, rust, language]
 ---
 
 ## Have you ever wonder what would happen if Typescript and Rust had a baby? Because I did!

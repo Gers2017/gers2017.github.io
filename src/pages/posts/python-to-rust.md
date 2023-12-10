@@ -5,25 +5,24 @@ title: "From Pythonista to Rustacean"
 description: "Basic introduction to rust for pythonistas"
 postdate: "June 5 2023"
 author: "Gers"
-tags:
-    - python
-    - rust
-    - tutorial
-    - lifetimes
+tags: [python, rust, tutorial, lifetimes, beginner]
 ---
 
 ## Introduction to rust for pythonistas
 
 I'm legally obliged to start this post with an unnecessary introduction.
-Python is a general purpose, dynamically typed, interpreted language that is both easy to learn and use. Python supports classes and all the _beauty_ of the OOP paradigm, it features a vibrant ecosystem of packages, its package manager is called `pip`.
+Python is a general purpose, dynamically typed, interpreted language that aims to be both easy to learn and use. Python has support for classes with all the _beauty_ of the OOP paradigm, it features a plentiful ecosystem of packages, its package manager is called `pip`.
 
 Due to its popularity, there are a lot of tutorials and learning resources. Personally I consider it great for prototyping and learning new concepts.
 
-Rust is a general purpose, statically typed, compiled language that aims to be both fast and memory safe. It features wonderful error messages, a great documentation, the all-mighty turbo fish (`<>::`), the glorious `match` statement and a thriving ecosystem of packages ([crates](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html)). Its package manager is called `cargo`.
+Rust is a general purpose, statically typed, compiled language It focuses on ergonomics, performance and memory safety.
 
-One the key features of rust is the borrow checker, it understands ownership and references in your code and by extension it understands your code. This enables it to enforce certain rules before running the code.
+It features lovely error messages, great documentation, the _all-mighty turbo fish_ (`<>::`), the glorious `match` statement and a thriving ecosystem of packages ([crates](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html)). Its package manager is called `cargo`.
 
-## Comparing Syntax
+Rust's secret sauce is the borrow checker.
+Rust achieves memory safety by enforcing certain rules, these rules prevent common memory-related bugs like: dereferencing dangling pointers, concurrent reads/writes to the same memory, memory leaks.
+
+## Python syntax vs Rust syntax
 
 ```py
 # python syntax
@@ -141,7 +140,7 @@ fn get_first_char(string: &str) -> Option<char> {
 }
 ```
 
-Ok so what is `&str` doing here? `&str` Represents a reference to a [string slice](https://doc.rust-lang.org/std/primitive.str.html).
+Ok so what is `&str` doing here? `&str` represents a reference to a [string slice](https://doc.rust-lang.org/std/primitive.str.html).
 You can think of it as two separate components `&` means reference and `str` means string slice. In a few words you can think of a reference as a pointer to the original value.
 
 <div align="center">
@@ -161,9 +160,11 @@ String::from("Hola"); // characters: 4, bytes: 4
 String::from("Здравствуйте"); // characters: 12, bytes: 24
 ```
 
-In the code above, the first string takes 4 bytes to encode while the last one takes 24 bytes to encode in UTF-8. We can't index into the string like we we'd do with an array because we may be indexing in the middle of a character.
+In the previous code, the first string takes 4 bytes to encode while the last one takes 24 bytes to encode in UTF-8. We can't index into the string like we we'd do with an array because we may be indexing in the middle of a character.
 
 Instead we need to use the `.chars()` method to access the characters. For a more in-depth explanation please read [this](https://doc.rust-lang.org/book/ch08-02-strings.html#internal-representation).
+
+-   Fun fact: `chars()` returns a `char` iterator
 
 ---
 
@@ -348,3 +349,5 @@ fn split_by(slice: &str, delimiter: char) -> Option<Pair> {
 -   [String Slice](https://doc.rust-lang.org/std/primitive.str.html)
 -   [String in Rust](https://doc.rust-lang.org/book/ch08-02-strings.html)
 -   [Lifetime Elision](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html?highlight=lifetimes#lifetime-elision)
+-   [Memory safety wikipedia](https://en.wikipedia.org/wiki/Memory_safety)
+-   [Chars](https://doc.rust-lang.org/std/str/struct.Chars.html)
