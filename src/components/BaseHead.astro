@@ -1,4 +1,6 @@
 ---
+import { AUTHOR } from "../_constants";
+
 export interface BaseHeadProps {
     title: string;
     description: string;
@@ -17,13 +19,27 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content={AUTHOR} />
+<meta name="keywords" content="programming,math,blog,github,typescript,rust" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gers2017.github.io" />
+<meta property="og:title" content="Gers Blog" />
+<meta
+    property="og:description"
+    content="Blog about computer science, nerd stuff and tech"
+/>
+<meta
+    property="og:image"
+    content="https://gers2017.github.io/assets/hello-friend-hero.png"
+/>
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-
 <meta
     property="twitter:image"
     content="https://gers2017.github.io/assets/hello-friend-hero.png"
