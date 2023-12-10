@@ -3,7 +3,6 @@
     border-radius: 4px;
     padding: 0.5rem 1rem;
     transition: all 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
-    max-width: 800px;
 }
 
 .blog-preview h2 {
@@ -16,7 +15,7 @@
 }
 
 .blog-preview:is(:hover, :focus-within) {
-    transform: scale(1.10);
+    transform: scale(1.1);
     box-shadow: 8px 8px 0px var(--color-primary-transparent);
 }
 
@@ -44,7 +43,6 @@
     border-radius: 4px;
     background-color: var(--color-primary-dark);
 }
-
 
 p,
 time {

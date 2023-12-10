@@ -37,11 +37,10 @@
 }
 
 /* highlight */
-.blog code {
+.blog p > code {
     background-color: var(--color-bg-gray);
     border-radius: 4px;
-    padding: 0rem 0.1rem;
-    margin: 0.02rem 0.05rem;
+    padding: 0px 2px;
     display: inline-flex;
     align-items: center;
 }
@@ -52,14 +51,13 @@
 
 /* code snippet */
 pre.astro-code {
-    font-size: var(--font-size-sm);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 16px;
     font-family: var(--font-mono);
     word-break: break-word;
-    max-height: 30vh;
 }
 
+/* outside the blog class? */
 pre.astro-code code {
     background-color: unset;
     font-size: unset;
@@ -69,7 +67,8 @@ pre.astro-code code {
 
 /* table css */
 
-tr > th, tr > td {
+tr > th,
+tr > td {
     padding: 0.25rem 0.75rem;
 }
 

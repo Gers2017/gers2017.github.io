@@ -14,7 +14,7 @@
     --color-bg: hsl(219, 35%, 10%);
     --color-gray-light: hsl(0, 0%, 35%);
     --color-bg-pale: hsl(219, 20%, 17%);
-    --color-bg-gray: hsl(220, 25%, 25%);
+    --color-bg-gray: hsla(220, 30%, 28%, 0.8);
     --color-primary: hsl(172, 100%, 35%);
     --color-primary-dark: hsl(178, 90%, 30%);
     --color-primary-transparent: hsl(172, 100%, 35%, 0.3);
