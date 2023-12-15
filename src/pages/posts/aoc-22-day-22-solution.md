@@ -18,12 +18,12 @@ The input for this puzzle is particularly misleading and I didn't bother to crea
 
 Please keep in mind that this solution is designed to work with the puzzle input (the largest input) and not the test input.
 
-This is because a grid requires two sets of transitions, one to solve part 1 and the last one to solve part 2.
+This is because a grid requires two sets of transitions, the first one to solve part 1 and the last one to solve part 2.
 
-If I wanted to support both input variants I would need 4 sets of transitions, 2 for each input variant.
+If I had to support both input variants I would need 4 sets of transitions, 2 for each input variant.
 For the sake of simplicity we're going to completely ignore the test input.
 
-The puzzle input:
+The puzzle input (I have divided each section with its face id, the original input isn't like this):
 
 ```
 ....11112222....
@@ -340,8 +340,12 @@ They were pretty useful, I could easily check connections between faces and calc
 
 ![cube face transition](/assets/cube-face-transition.png)
 
-For instance look at this face transition.
-First we need to get the distance from `y` to `left.i`, to do that we use `(y-i)`. Next subtract the distance `(y-i)` from `right.f`.
+-   the **red i** is the lowest **y** value of the left face
+-   the **red f** is the highest **y** value of the left face
+-   the **blue i** is the lowest **y** value of the right face
+-   the **blue f** is the highest **y** value of the right face
+
+For instance, look at the previous face transition, we need to get the distance from `left.i` to `y`, to do that we use `(y - left.i)`; next subtract the distance `(y - left.i)` from `right.f`.
 
 The resulting new y position is: `ny = right.f - (y - left.i)`.
 
