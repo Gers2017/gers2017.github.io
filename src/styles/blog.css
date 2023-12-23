@@ -65,6 +65,13 @@ pre.astro-code code {
     overflow-x: auto;
 }
 
+@media only screen and (max-width: 768px) {
+    /* code snippet */
+    pre.astro-code {
+        font-size: var(--font-size-sm);
+    }
+}
+
 /* table css */
 
 tr > th,
