@@ -27,7 +27,7 @@ Then today is your lucky day!
 Presenting: **TwitterDB™**
 
 The world's first AI-powered Serverless Database.
-Capable of handling 69 Trillion request per second. Infinite webscale. No SQL, fast and reliable by default.
+Capable of handling 69 Trillion requests per second. Infinite webscale. No SQL, fast and reliable by default.
 
 Truly an exceptional feat of engineering, redefining what a Database is.
 
@@ -152,10 +152,11 @@ Good news for us, we can control a browser and avoid all the pain of using the t
 We'll use this little tool I like to call **playwright**, I only use this tool for testing purposes and nothing else. 😉😉😉
 
 Bring your javascript hat because we're creating a new nodejs project.
+
 With the baroque nature of Javascript in our side, we carve our way to the `twitter.com` website.
 
 -   \*Carefully types the credentials\*
--   \*Waits for a unbearable amount of javascript to be downloaded\*
+-   \*Waits for an unbearable amount of javascript to be downloaded\*
 -   \*The website is slow as a snail\*
 -   The modern web experience 😌
 
@@ -163,9 +164,9 @@ And this is where **the text file** comes into play.
 By reading the file and splitting it into chunks, we get a list of tweets.
 Each of them contains a fragment of the bytes encoded in base64.
 
-Now, imagine the browser furiously posting each chunk from the text file. (Try to beat text files now closure devs)
+Now, imagine the browser furiously posting each chunk from the text file. (Try to beat text files now clojure devs)
 
-At the end, when every chunk has been posted, press the big "post" button. And wait a few seconds. Success!!!
+At the end, when every chunk has been posted, we instruct playwright to press the big "post" button. And wait a few seconds.... Success!!!
 
 And with that, I'm out. We have stored our image in **TwitterDB™** and now we can retrieve the encoded bytes from each tweet, decode it, decrypt the bytes and get our precious image back.
 
